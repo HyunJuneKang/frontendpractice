@@ -1,0 +1,22 @@
+header {
+    color: white;
+    padding: 20px;
+    background-color: #2c2a5c;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+main {
+    min-height: 600px;
+    position: relative;
+    overflow: hidden;
+}
+
+footer {
+    color:white;
+    background-color: #2c2a5c;
+}

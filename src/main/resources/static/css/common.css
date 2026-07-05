@@ -1,0 +1,27 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: lightslategrey;
+}
+
+.card {
+    width: 300px;
+    padding: 20px;
+    background-color: #2c2a5c;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    box-shadow:
+            0 6px 12px rgba(0,0,0,0.3),
+            inset 0 0 0 3px #f6d77a;
+    color: white;
+    transition: transform 0.4s;
+    cursor: pointer;
+}
+
+.card:hover{
+    background-color:silver;
+    transform: translateY(-5px);
+}

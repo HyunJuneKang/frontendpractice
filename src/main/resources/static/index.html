@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>프론트엔드연습</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/screen.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<!--로고-->
+<body>
+<header>
+    <nav class="nav">
+        <div class="logo">로고이미지</div>
+        <div>환경설정</div>
+    </nav>
+</header>
+<main>
+    <section id="main-section" class="screen active">
+        <h1 class="card-header">프론트엔드 연습</h1>
+        <button class="card" id="button-start" data-target="save-section">게임시작</button>
+    </section>
+
+    <section id="save-section" class="screen">
+        <div class="card-container">
+            <h2 class="card-header">세이브 슬롯 선택</h2>
+            <div class="card" data-target="game-section">
+                <h3>새 게임</h3>
+            </div>
+            <div class="card" data-target="load-section">
+                <h3>불러오기</h3>
+            </div>
+            <div class="card" data-target="main-section">
+                <h3>뒤로 가기</h3>
+            </div>
+        </div>
+    </section>
+
+    <section id="load-section" class="screen">
+        <div class="card-container">
+            <h2 class="card-header">세이브 선택</h2>
+
+            <div class="card" data-target="main-section">
+                <h3>뒤로 가기</h3>
+            </div>
+        </div>
+    </section>
+</main>
+<footer>
+    <p>footer</p>
+    <p>&copy;2026 프론트엔드연습하기_shinhanDS강현준</p>
+</footer>
+    <script src="js/index.js"></script>
+</body>
+</html>

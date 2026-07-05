@@ -1,0 +1,40 @@
+
+.card-header{
+    background-color: #282751;
+    color: white;
+    text-align: center;
+    width: 300px;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    box-shadow:
+            0 6px 12px rgba(0,0,0,0.3),
+            inset 0 0 0 3px #faf8e7;
+}
+
+#main-section{
+    padding: 20px 80px;
+}
+
+#save-section {
+    padding: 20px 80px;
+}
+#save-section .card-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+#save-section .card{
+    width: 300px;
+    padding: 20px;
+    background-color: #2c2a5c;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    box-shadow:
+            0 6px 12px rgba(0,0,0,0.3),
+            inset 0 0 0 3px #f6d77a;
+    color: white;
+}
+#load-section{
+    padding: 20px 80px;
+}

@@ -1,0 +1,27 @@
+/*화면 비활성화*/
+.screen {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transform: translateX(-30%);
+    transition: transform 1.5s, opacity 1s;
+}
+/*화면 활성화*/
+.screen.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(0%);
+}
+
+/* 현재 화면이 왼쪽으로 사라질 때 */
+.screen.active.move-left {
+    transform: translateX(-30%);
+    opacity: 0;
+}
