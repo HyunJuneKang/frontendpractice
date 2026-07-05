@@ -3,47 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <title>InGame...</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/game-layout.css">
+    <link rel="stylesheet" href="../css/game.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
-<section id="game-lobby" class="screen">
-    <aside class="game-sidebar">
-        <section class="sidebar-header">
-            <div class="sidebar-logo">로고이미지</div>
-        </section>
+<div id="game-lobby" class="layout">
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            로고이미지
+        </div>
+
         <nav class="sidebar-menu">
-            <section class="sidebar-section" data-category="combat">
-                <h3 class="sidebar-section-title">전투</h3>
-                <button type="button" class="sidebar-button" data-target="combat-section">전투레벨</button>
-                <button type="button" class="sidebar-button" data-target="combat-section">공격</button>
-                <button type="button" class="sidebar-button" data-target="combat-section">힘</button>
-                <button type="button" class="sidebar-button" data-target="combat-section">방어</button>
-                <button type="button" class="sidebar-button" data-target="combat-section">체력</button>
+            <section class="sidebar-section" data-category="shop">
+                <h3 class="sidebar-section-title">상점
+                    <button type="button" class="sidebar-section-title-button-hide" data-container="shop-button-container">👁</button>
+                </h3>
+                <div class="sidebar-button-container" id="shop-button-container">
+                    <button type="button" class="sidebar-button" data-target="shop-section">🪙상점</button>
+                    <button type="button" class="sidebar-button" data-target="inventory-section">💼인벤토리</button>
+                </div>
             </section>
+
+            <section class="sidebar-section" data-category="combat">
+                <h3 class="sidebar-section-title">전투
+                    <button type="button" class="sidebar-section-title-button-hide" data-container="combat-button-container">👁</button>
+                </h3>
+                <div class="sidebar-button-container" id="combat-button-container">
+                    <button type="button" class="sidebar-button" data-target="combat-section">⚔️전투레벨</button>
+                    <button type="button" class="sidebar-button" data-target="combat-section">🗡️공격</button>
+                    <button type="button" class="sidebar-button" data-target="combat-section">💪힘</button>
+                    <button type="button" class="sidebar-button" data-target="combat-section">🛡️방어</button>
+                    <button type="button" class="sidebar-button" data-target="combat-section">❤️체력</button>
+                </div>
+            </section>
+
             <section class="sidebar-section" data-category="non-combat">
-                <h3 class="sidebar-section-title">비전투</h3>
-                <button type="button" class="sidebar-button" data-target="woodcutting-section">벌목</button>
-                <button type="button" class="sidebar-button" data-target="fishing-section">낚시</button>
-                <button type="button" class="sidebar-button" data-target="camping-section">캠프파이어</button>
-                <button type="button" class="sidebar-button" data-target="cooking-section">요리</button>
-                <button type="button" class="sidebar-button" data-target="mining-section">채광</button>
+                <h3 class="sidebar-section-title">비전투
+                    <button type="button" class="sidebar-section-title-button-hide" data-container="non-combat-button-container">👁</button>
+                </h3>
+                <div class="sidebar-button-container" id="non-combat-button-container">
+                    <button type="button" class="sidebar-button" data-target="woodcutting-section">🌳벌목</button>
+                    <button type="button" class="sidebar-button" data-target="fishing-section">🐟낚시</button>
+                    <button type="button" class="sidebar-button" data-target="campfire-section">🔥캠프파이어</button>
+                    <button type="button" class="sidebar-button" data-target="cooking-section">🍳요리</button>
+                    <button type="button" class="sidebar-button" data-target="mining-section">⛏️채광</button>
+                </div>
             </section>
         </nav>
     </aside>
-    <header id="header-section">
-
+    <header class="main-header">
+        게임화면 헤더
     </header>
-    <main class="game-main">
-        <section id="combat-section" class="content-section">전투 화면</section>
+    <main class="main">
+        <section id="shop-section" class="content-section hidden">상점 화면</section>
+        <section id="inventory-section" class="content-section hidden">인벤토리 화면</section>
+        <section id="combat-section" class="content-section hidden">전투 화면</section>
         <section id="woodcutting-section" class="content-section">벌목 화면</section>
-        <section id="fishing-section" class="content-section">낚시 화면</section>
-        <section id="campfire-section" class="content-section">캠프파이어 화면</section>
-        <section id="cooking-section" class="content-section">요리 화면</section>
-        <section id="mining-section" class="content-section">채광 화면</section>
+        <section id="fishing-section" class="content-section hidden">낚시 화면</section>
+        <section id="campfire-section" class="content-section hidden">캠프파이어 화면</section>
+        <section id="cooking-section" class="content-section hidden">요리 화면</section>
+        <section id="mining-section" class="content-section hidden">채광 화면</section>
     </main>
-</section>
-<footer>
-    <p>footer</p>
-    <p>&copy;2026 프론트엔드연습하기_shinhanDS강현준</p>
-</footer>
+    <footer class="footer">
+        <p>footer</p>
+        <p>&copy;2026 프론트엔드연습하기_shinhanDS강현준</p>
+    </footer>
+</div>
+<script src="../js/game.js"></script>
 </body>
 </html>

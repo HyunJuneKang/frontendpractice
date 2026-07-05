@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    color:white;
 }
 
 body {
@@ -24,4 +25,7 @@ body {
 .card:hover{
     background-color:silver;
     transform: translateY(-5px);
+}
+.hidden{
+    display:none !important;
 }

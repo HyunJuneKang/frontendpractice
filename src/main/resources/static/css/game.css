@@ -1,0 +1,61 @@
+/* 사이드바 관련 */
+.sidebar {
+    background-color: #302367;
+    color: white;
+}
+
+.sidebar-logo {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #4f4f70;
+}
+
+.sidebar-section-title {
+    color: #4f4f70;
+    font-size: 16px;
+    margin: 5px 0 0 5px;
+}
+.sidebar-button-container{
+    display:flex;
+    flex-direction:column;
+}
+.sidebar-section-title-button-hide {
+    background-color: inherit;
+    font-size: 16px;
+    color: white;
+    border: none;
+}
+
+.sidebar-section-title-button-hide:hover {
+    cursor: pointer;
+}
+
+.sidebar-button {
+    text-align: left;
+    background-color: inherit;
+    border: none;
+    font-size: 18px;
+    margin: 0 7px 7px 0;
+}
+
+.sidebar-button:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+/* 게임 메인화면 관련 */
+.main-header {
+    background-color: #5451ac;
+}
+.main {
+    background-image: url("../images/game-background.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+
+.footer {
+    color: white;
+    background-color: #2c2a5c;
+}

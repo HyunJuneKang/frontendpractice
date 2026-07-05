@@ -1,0 +1,47 @@
+.layout {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: 80px 1fr 120px;
+    grid-template-areas:
+        "sidebar main-header"
+        "sidebar main"
+        "footer  footer";
+}
+
+.sidebar {
+    grid-area: sidebar;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.sidebar-logo {
+    flex-shrink: 0;
+    height: 80px;
+}
+
+.sidebar-menu {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+.sidebar-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-header {
+    grid-area: main-header;
+}
+
+.main {
+    grid-area: main;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.footer {
+    grid-area: footer;
+}
