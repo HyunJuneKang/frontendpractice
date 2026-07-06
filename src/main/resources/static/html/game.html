@@ -21,7 +21,7 @@
                     <button type="button" class="sidebar-section-title-button-hide" data-container="shop-button-container">👁</button>
                 </h3>
                 <div class="sidebar-button-container" id="shop-button-container">
-                    <button type="button" class="sidebar-button" data-target="shop-section">🪙상점</button>
+                    <button type="button" class="sidebar-button" data-target="shop-section">💰상점</button>
                     <button type="button" class="sidebar-button" data-target="inventory-section">💼인벤토리</button>
                 </div>
             </section>
@@ -60,7 +60,9 @@
         <section id="shop-section" class="content-section hidden">상점 화면</section>
         <section id="inventory-section" class="content-section hidden">인벤토리 화면</section>
         <section id="combat-section" class="content-section hidden">전투 화면</section>
-        <section id="woodcutting-section" class="content-section">벌목 화면</section>
+        <section id="woodcutting-section" class="content-section">
+            <div class="active-card-container"></div>
+        </section>
         <section id="fishing-section" class="content-section hidden">낚시 화면</section>
         <section id="campfire-section" class="content-section hidden">캠프파이어 화면</section>
         <section id="cooking-section" class="content-section hidden">요리 화면</section>
@@ -71,6 +73,7 @@
         <p>&copy;2026 프론트엔드연습하기_shinhanDS강현준</p>
     </footer>
 </div>
+<script src="../js/data/game-data.js"></script>
 <script src="../js/game.js"></script>
 </body>
 </html>
