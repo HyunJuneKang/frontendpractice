@@ -64,8 +64,123 @@
             <div class="active-card-container"></div>
         </section>
         <section id="combat-section" class="content-section hidden">
-            <div class="active-card-container"></div>
+            <div id="combat-section-place-button-container">
+                <button type="button" class="combat-section-place-button" data-place="1">전투지역</button>
+                <button type="button" class="combat-section-place-button" data-place="2">공사중..</button>
+                <button type="button" class="combat-section-place-button" data-place="3">공사중..</button>
+                <button type="button" class="combat-section-place-button" data-place="4">공사중..</button>
+            </div>
+            <div id="combat-section-place-detail-button-container" class="hidden">
+
+            </div>
+            <div id="combat-section-battle-info-container">
+                <div id="combat-section-battle-character-info-container" class="entity-info-container">
+                    <!--체력과 공격 주기에 대한 정보 양옆으로 나열되어있으며(flex) , 체력과 공격주기는 각 캐릭터의 db에서 계산한 후 렌더링-->
+                    <div class="combat-info-header" id="my-character">
+                        <div class="combat-info-health-card">
+                            <div class="combat-info-health-bar"></div>
+                            <span>❤️</span>
+                            <span class="health-value"></span>
+                        </div>
+                        <div class="combat-info-attack-duration-card">
+                            <div class="combat-info-attack-duration-bar"></div>
+                            <span>공격 간격:</span>
+                            <span class="attack-duration-value"></span>
+                        </div>
+                    </div>
+                    <div id="combat-info-body">
+                        <div id="combat-info-left-info" class="combat-info">
+                            <!--펫에 대한 정보, 버튼누르면 인벤토리에 있는 펫 js로 option 땡겨와라 장착 가능 class="combat-info-select-pet"-->
+                            <div id="combat-info-pet-container" class="combat-info-card">
+                                <div class="combat-info-card-header">펫</div>
+                                <select id="combat-info-pet" class="combat-info-card-body" name="펫 선택">
+                                    <option value="">-- 선택하세요 --</option>
+                                </select>
+                            </div>
+                            <!--스킬에 대한 정보-->
+                            <!--가지고 있는 스킬 리스트를 button으로 만들어 넣음 class="combat-info-select-skill"-->
+                            <div id="combat-info-select-skill-container" class="combat-info-card">
+                                <div class="combat-info-card-header">스킬</div>
+                                <div id="combat-info-skill-body"></div>
+                            </div>
+                            <!--장비에 대한 정보-->
+                            <!--장비가 이미 비어있는걸로 존재하며 클릭시 right-info 에 인벤토리가 보여줘 장착 가능-->
+                            <!--rendering 할때 장비에 비어있는 이미지 또는 장착할때 입은 이미지를 렌더링 해서 보여줘야함-->
+                            <div id="combat-info-select-equipment-card" class="combat-info-card">
+                                <div class="combat-info-card-header">장비</div>
+                                <div id="combat-info-equipment-column-container-container">
+                                    <div class="combat-info-equipment-column-container">
+                                        <button type="button" class="combat-info-select-equipment" data-category="headgear"></button>
+                                        <button type="button" class="combat-info-select-equipment" data-category="armor"></button>
+                                        <button type="button" class="combat-info-select-equipment" data-category="pants"></button>
+                                        <button type="button" class="combat-info-select-equipment" data-category="shoes"></button>
+                                    </div>
+                                    <div class="combat-info-equipment-column-container">
+                                        <button type="button" class="combat-info-select-equipment" data-category="clock"></button>
+                                        <button type="button" class="combat-info-select-equipment" data-category="ring"></button>
+                                        <button type="button" class="combat-info-select-equipment" data-category="necklace"></button>
+                                    </div>
+                                    <div class="combat-info-equipment-column-container">
+                                        <button type="button" class="combat-info-select-equipment" data-category="shoulder"></button>
+                                        <button type="button" class="combat-info-select-equipment" data-category="weapon"></button>
+                                        <button type="button" class="combat-info-select-equipment" data-category="shield"></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="combat-info-right-info">
+                            <!--능력치에 대한 정보-->
+                            <!--js로 능력치에 대한 값을 뿌려준다.-->
+                            <div id="combat-info-status-card" class="combat-info-card">
+                                <div class="combat-info-card-header">능력치</div>
+                                <div id="combat-info-status-body">
+                                    <!--js로 능력치 뿌리기-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="combat-section-battle-enemy-info-container" class="entity-info-container">
+                    <div class="combat-info-header" id="enemy-character">
+                        <div class="combat-info-health-card">
+                            <div class="combat-info-health-bar"></div>
+                            <span>❤️</span>
+                            <span class="health-value"></span>
+                        </div>
+                        <div class="combat-info-attack-duration-card">
+                            <div class="combat-info-attack-duration-bar"></div>
+                            <span>공격 간격:</span>
+                            <span class="attack-duration-value"></span>
+                        </div>
+                    </div>
+                    <div id="enemy-info-card">
+                        <div id="enemy-card">
+                            <div id="enemy-status">
+                                <div>
+                                    <span>⚔️최대공격력</span>
+                                    <span id="enemy-max-damage"></span>
+                                </div>
+                                <div>
+                                    <span>⚔️최소공격력</span>
+                                    <span id="enemy-min-damage"></span>
+                                </div>
+                                <div>
+                                    <span>🛡️방어력</span>
+                                    <span id="enemy-defence"></span>
+                                </div>
+                            </div>
+                            <div id="enemy-image">
+                                <img alt="몹 이미지">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="inventory-screen" class="hidden">
+                    <!--구현중-->
+                </div>
+            </div>
         </section>
+        <!--여러 활동에 대한 section , 활동에 대한 값을 저장한 db(현재는 임시데이터)에서 행위 자체를 가져와서 뿌려줌-->
         <section id="woodcutting-section" class="content-section">
             <div class="active-card-container"></div>
         </section>
@@ -75,8 +190,12 @@
         <section id="campfire-section" class="content-section hidden">
             <div class="active-card-container"></div>
         </section>
-        <section id="cooking-section" class="content-section hidden">요리 화면</section>
-        <section id="mining-section" class="content-section hidden">채광 화면</section>
+        <section id="cooking-section" class="content-section hidden">
+            <div class="active-card-container"></div>
+        </section>
+        <section id="mining-section" class="content-section hidden">
+            <div class="active-card-container"></div>
+        </section>
     </main>
     <footer class="footer">
         <p>footer</p>

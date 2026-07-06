@@ -8,22 +8,37 @@ function init(){
 }
 //화면 렌더링
 function renderGameScreen() {
-    renderSkillScreen();
+    renderCombatScreen();
+    renderAllJobScreen();
+}
+//전투화면 렌더링
+function renderCombatScreen() {
+
 }
 //스킬 화면 렌더링
-function renderSkillScreen(){
-    renderWoodcuttingScreen();
+function renderAllJobScreen() {
+    renderJobScreen("woodcutting");
+    renderJobScreen("fishing");
+    renderJobScreen("mining");
+    renderJobScreen("cooking");
 }
 //스킬 세부 화면 렌더링
-function renderWoodcuttingScreen() {
-    woodcuttingList.forEach((p)=>{
-        $(".active-card-container").append(`
-            <button type="button" id="tree-1" class="card" data-id="${p.id}">
-            <div>${p.name} ${p.icon}</div>
-            <div>${p.gainExp}exp</div>
-            <div>휙득 아이템 id:${p.gainItemId}</div>
-            <div>수량 : ${p.gainItemAmount}</div>
-            <div class="progress-bar progress-bar"> </div>
+function renderJobScreen(skillName) {
+    const skillList = skillData[skillName];
+
+    const $container = $(`#${skillName}-section .active-card-container`);
+
+    $container.empty();
+
+    skillList.forEach((p) => {
+        $container.append(`
+            <button type="button" class="card" data-skill="${skillName}" data-id="${p.id}">
+                <div>${p.name} ${p.icon}</div>
+                <div>필요 레벨: ${p.requiredLevel}</div>
+                <div>${p.gainExp} exp</div>
+                <div>획득 아이템 id: ${p.gainItemId}</div>
+                <div>수량: ${p.gainItemAmount}</div>
+                <div class="progress-bar"></div>
             </button>
         `);
     });
