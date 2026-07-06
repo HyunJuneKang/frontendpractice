@@ -160,3 +160,12 @@ const skillData = {
     mining: miningList,
     cooking: cookingList
 };
+
+const player = {
+    hp:100,
+    maxHp:100,
+    attackDuration:4,
+    minDamage:4,
+    maxDamage:20,
+    defence:1
+}

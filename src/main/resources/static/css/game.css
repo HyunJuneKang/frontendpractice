@@ -69,6 +69,202 @@
     height:20px;
     background-color: green;
 }
+/*
+    전투관련
+ */
+/* 전투 화면 전체 */
+#combat-section {
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    color: #e5e7eb;
+}
+
+/* 상단 지역 버튼 영역 */
+.combat-place-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+
+    background-color: #202b38;
+    border-radius: 4px;
+    padding: 18px 20px;
+    margin-bottom: 12px;
+}
+
+/* 지역 버튼 */
+.combat-place-button {
+    background: none;
+    border: none;
+    color: #e5e7eb;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 10px 18px;
+    border-radius: 6px;
+}
+
+.combat-place-button:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* 세부 지역 버튼 영역 */
+.combat-place-detail-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+
+    background-color: #202b38;
+    border-radius: 4px;
+    padding: 12px;
+    margin-bottom: 20px;
+}
+
+/* 전투 메인 레이아웃 */
+.combat-battle-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 24px;
+    align-items: start;
+}
+
+/* 내 정보 / 적 정보 공통 카드 */
+.entity-info-container {
+    background-color: #263442;
+    border-radius: 6px;
+    overflow: hidden;
+    border-top: 4px solid #4ade80;
+}
+
+/* 적 패널은 빨간 테두리 */
+.enemy-panel {
+    border-top-color: #f87171;
+}
+
+/* 상단 체력 / 공격 간격 */
+.combat-info-header {
+    padding: 18px 14px;
+    background-color: #202b38;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+/* body 영역 */
+.combat-info-body {
+    padding: 14px;
+}
+
+/* 카드 공통 */
+.combat-info-card {
+    background-color: #344252;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+/* 카드 제목 */
+.combat-info-card-header {
+    background-color: #465568;
+    color: #f3f4f6;
+    font-weight: 700;
+    text-align: center;
+    padding: 8px 10px;
+}
+
+/* 카드 내용 */
+.combat-info-card-body {
+    padding: 12px;
+}
+
+.combat-info-health-card,
+.combat-info-attack-duration-card {
+    position: relative;
+}
+
+.combat-bar {
+    height: 14px;
+    background-color: #374151;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.combat-info-health-bar {
+    height: 100%;
+    width: 100%;
+    background-color: #34d399;
+    border-radius: 4px;
+}
+
+.enemy-panel .combat-info-health-bar {
+    background-color: #ef7065;
+}
+
+.combat-info-attack-duration-bar {
+    height: 100%;
+    width: 0%;
+    background-color: #64748b;
+    border-radius: 4px;
+}
+
+.combat-bar-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 700;
+}
+
+.equipment-slots {
+    display: grid;
+    grid-template-columns: repeat(3, 56px);
+    justify-content: center;
+    gap: 12px;
+    padding: 16px;
+}
+
+.combat-equipment-slot {
+    width: 56px;
+    height: 56px;
+
+    background-color: #2f3b4a;
+    border: 2px solid #6b7280;
+    border-radius: 8px;
+
+    color: #d1d5db;
+    cursor: pointer;
+}
+
+.combat-equipment-slot:hover {
+    background-color: #3b4858;
+    border-color: #93c5fd;
+}
+
+.combat-status-row,
+.enemy-status-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 8px 4px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    font-size: 14px;
+}
+
+.combat-status-row:last-child,
+.enemy-status-row:last-child {
+    border-bottom: none;
+}
+
+.status-name {
+    color: #d1d5db;
+}
+
+.status-value {
+    color: #ffffff;
+    font-weight: 700;
+}
 /* 푸터 */
 .footer {
     color: white;
