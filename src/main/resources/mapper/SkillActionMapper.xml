@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.shinhan.frontendpractice.mapper.SkillActionMapper">
+
+    <select id="selectAll" resultType="SkillActionDTO">
+        SELECT
+        action_id,
+        skill_type,
+        action_name,
+        required_level,
+        gain_exp,
+        gain_item_id,
+        gain_item_amount
+        FROM skill_action
+        ORDER BY action_id
+    </select>
+
+    <select id="selectBySkillType" parameterType="string" resultType="SkillActionDTO">
+        SELECT
+        action_id,
+        skill_type,
+        action_name,
+        required_level,
+        gain_exp,
+        gain_item_id,
+        gain_item_amount
+        FROM skill_action
+        WHERE skill_type = #{skillType}
+        ORDER BY required_level
+    </select>
+
+</mapper>
