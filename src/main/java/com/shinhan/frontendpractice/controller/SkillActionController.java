@@ -1,7 +1,7 @@
 package com.shinhan.frontendpractice.controller;
 
 import com.shinhan.frontendpractice.dto.SkillActionDTO;
-import com.shinhan.frontendpractice.mapper.SkillActionMapper;
+import com.shinhan.frontendpractice.service.SkillActionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,16 +14,15 @@ import java.util.List;
 @RequestMapping("/api/skills")
 @RequiredArgsConstructor
 public class SkillActionController {
-
-    private final SkillActionMapper skillActionMapper;
+    private final SkillActionService skillActionService;
 
     @GetMapping
     public List<SkillActionDTO> selectAll() {
-        return skillActionMapper.selectAll();
+        return skillActionService.selectAllService();
     }
 
     @GetMapping("/{skillType}")
     public List<SkillActionDTO> selectBySkillType(@PathVariable String skillType) {
-        return skillActionMapper.selectBySkillType(skillType);
+        return skillActionService.selectBySkillTypeService(skillType);
     }
 }

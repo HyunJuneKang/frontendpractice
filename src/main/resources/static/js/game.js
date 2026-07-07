@@ -7,8 +7,22 @@ $(()=>{
 //init
 
 function init(){
+    loadSkillActionCache();
     renderGameScreen();
     bindEvent();
+}
+//스킬 데이터 로드
+function loadSkillActionCache(){
+    $.ajax({
+        url:"/api/skills",
+        type:"GET",
+        success: function(data){
+            console.log(data);
+        },
+        error: function () {
+            console.log("스킬 데이터 로딩 실패");
+        }
+    })
 }
 //화면 렌더링
 function renderGameScreen() {
@@ -144,6 +158,7 @@ function startJobLoop(process) {
             return;
         }
         //보상 지금 위치
+
         //알림
         showToast(process);
         startJobLoop(process);
