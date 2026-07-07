@@ -1,3 +1,6 @@
+:root {
+    --job-duration: 3s;
+}
 /* 사이드바 관련 */
 .sidebar {
     background-color: #302367;
@@ -63,11 +66,31 @@
     width: 260px;
     height:20px;
     background-color: grey;
+    overflow: hidden;
 }
-.progress-bar-active{
-    width: 260px;
-    height:20px;
+.progress-bar-fill{
+    width: 0;
+    height: 100%;
     background-color: green;
+}
+.progress-bar-fill.active{
+    animation: progress-bar-run var(--job-duration, 3s) linear forwards;
+}
+@keyframes progress-bar-run {
+    from { width: 0;}
+    to { width: 100%;}
+}
+/* 활동 완료 토스트 메시지 */
+.toast { animation: slideUp 2s ease forwards;}
+@keyframes slideUp{
+    0% { transform: translateY(100%); opacity:0 }
+    25% { transform: translateY(0); opacity:1 }
+    50% { transform: translateY(0); opacity:1 }
+    100% { transform: translateY(-20px); opacity:0 }
+}
+#toast-container {
+    position: fixed;
+    bottom: 20px;
 }
 /* 푸터 */
 .footer {
