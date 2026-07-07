@@ -1,7 +1,7 @@
 const woodcuttingList = [
     {
         id: "1",
-        name: "참나무",
+        name: "참나무 베기",
         icon: "🌳",
         requiredLevel: "1",
         gainExp: 10,
@@ -10,7 +10,7 @@ const woodcuttingList = [
     },
     {
         id: "2",
-        name: "야자수",
+        name: "야자수 베기",
         icon: "🌴",
         requiredLevel: "10",
         gainExp: 20,
@@ -19,7 +19,7 @@ const woodcuttingList = [
     },
     {
         id: "3",
-        name: "트리",
+        name: "트리 베기",
         icon: "🎄",
         requiredLevel: "20",
         gainExp: 30,
@@ -28,7 +28,7 @@ const woodcuttingList = [
     },
     {
         id: "4",
-        name: "침엽수",
+        name: "침엽수 베기",
         icon: "🌲",
         requiredLevel: "30",
         gainExp: 40,
@@ -39,7 +39,7 @@ const woodcuttingList = [
 
 const fishingList = [
     {
-        id: "1",
+        id: "11",
         name: "강낚시",
         icon: "🐟",
         requiredLevel: "1",
@@ -48,7 +48,7 @@ const fishingList = [
         gainItemAmount: 1
     },
     {
-        id: "2",
+        id: "12",
         name: "연못낚시",
         icon: "🐠",
         requiredLevel: "5",
@@ -57,7 +57,7 @@ const fishingList = [
         gainItemAmount: 1
     },
     {
-        id: "3",
+        id: "13",
         name: "바다낚시",
         icon: "🐡",
         requiredLevel: "12",
@@ -66,7 +66,7 @@ const fishingList = [
         gainItemAmount: 1
     },
     {
-        id: "4",
+        id: "14",
         name: "심해낚시",
         icon: "🦈",
         requiredLevel: "25",
@@ -78,7 +78,7 @@ const fishingList = [
 
 const miningList = [
     {
-        id: "1",
+        id: "21",
         name: "돌 채광",
         icon: "🪨",
         requiredLevel: "1",
@@ -87,7 +87,7 @@ const miningList = [
         gainItemAmount: 1
     },
     {
-        id: "2",
+        id: "22",
         name: "구리 채광",
         icon: "⛏️",
         requiredLevel: "5",
@@ -96,7 +96,7 @@ const miningList = [
         gainItemAmount: 1
     },
     {
-        id: "3",
+        id: "23",
         name: "철 채광",
         icon: "⚒️",
         requiredLevel: "12",
@@ -105,7 +105,7 @@ const miningList = [
         gainItemAmount: 1
     },
     {
-        id: "4",
+        id: "24",
         name: "금 채광",
         icon: "🪙",
         requiredLevel: "25",
@@ -117,7 +117,7 @@ const miningList = [
 
 const cookingList = [
     {
-        id: "1",
+        id: "31",
         name: "생선 굽기",
         icon: "🐟",
         requiredLevel: "1",
@@ -126,7 +126,7 @@ const cookingList = [
         gainItemAmount: 1
     },
     {
-        id: "2",
+        id: "32",
         name: "새우 요리",
         icon: "🦐",
         requiredLevel: "5",
@@ -135,7 +135,7 @@ const cookingList = [
         gainItemAmount: 1
     },
     {
-        id: "3",
+        id: "33",
         name: "스테이크 굽기",
         icon: "🥩",
         requiredLevel: "12",
@@ -144,7 +144,7 @@ const cookingList = [
         gainItemAmount: 1
     },
     {
-        id: "4",
+        id: "34",
         name: "특제 요리",
         icon: "🍲",
         requiredLevel: "25",
@@ -169,3 +169,28 @@ const player = {
     maxDamage:20,
     defence:1
 }
+const playerInventory = [
+
+]
+const woodcuttingItemList = [
+    {
+        id: "51",
+        name: "참나무",
+        icon: "🪵"
+    },
+    {
+        id: "52",
+        name: "야자수",
+        icon: "🪵"
+    },
+    {
+        id: "53",
+        name: "트리",
+        icon: "🪵"
+    },
+    {
+        id: "54",
+        name: "침엽수",
+        icon: "🪵"
+    }
+]

@@ -90,7 +90,6 @@ function bindEvent(){
     $(".sidebar-button").on("click",handleRenderSectionScreen);
     $(".active-card-container .card").on("click",handleChangeProcess);
 }
-
 //handler
 function handleToggleSectionButtons(e) {
     const containerId = $(e.currentTarget).data("container");
@@ -101,8 +100,9 @@ function handleRenderSectionScreen(e){
     switchSectionScreen(sectionId);
 }
 function handleChangeProcess(e){
-    switchChangeProcess($(e.currentTarget).data("id"));
+    switchChangeProcess($(e.currentTarget));
 }
+
 //Events
 //화면 변경
 function switchSectionScreen(sectionId){
@@ -112,8 +112,16 @@ function switchSectionScreen(sectionId){
     //헤더정보 변경
     console.log(sectionId,"변경 완료");
 }
-function switchChangeProcess(){
-    //
+function switchChangeProcess($currentTarget){
+    //화면 표시 : css 구조 변경
+    renderJobProcess($currentTarget);
+    //게임 데이터 처리 : jobID
+
+}
+function renderJobProcess($currentTarget){
+    $(".progress-bar").removeClass("progress-bar-active");
+    $currentTarget.find(".progress-bar").addClass("progress-bar-active");
+    console.log($currentTarget , "css 교체 완료");
 }
 //사이드바 숨기기
 function toggleButtonContents(containerId){
