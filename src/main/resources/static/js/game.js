@@ -1,7 +1,11 @@
+let jobTimer = null;
+let currentProcess = null;
+
 $(()=>{
     init();
 });
 //init
+
 function init(){
     renderGameScreen();
     bindEvent();
@@ -79,7 +83,9 @@ function renderJobScreen(skillName) {
                 <div>${p.gainExp} exp</div>
                 <div>획득 아이템 id: ${p.gainItemId}</div>
                 <div>수량: ${p.gainItemAmount}</div>
-                <div class="progress-bar"></div>
+                <div class="progress-bar">
+                    <div class="progress-bar-fill"></div>
+                </div>
             </button>
         `);
     });
@@ -90,7 +96,6 @@ function bindEvent(){
     $(".sidebar-button").on("click",handleRenderSectionScreen);
     $(".active-card-container .card").on("click",handleChangeProcess);
 }
-
 //handler
 function handleToggleSectionButtons(e) {
     const containerId = $(e.currentTarget).data("container");
@@ -101,9 +106,60 @@ function handleRenderSectionScreen(e){
     switchSectionScreen(sectionId);
 }
 function handleChangeProcess(e){
-    switchChangeProcess($(e.currentTarget).data("id"));
+    clearTimeout(jobTimer)
+    const process= switchChangeProcess($(e.currentTarget));
+    startJobLoop(process);
 }
 //Events
+//작업 반복
+function switchChangeProcess($currentTarget){
+    const skillType = $currentTarget.data("skill");
+    const skillId = $currentTarget.data("id");
+    const currentSkill = skillData[skillType].find((p) =>
+        String(p.id) === String(skillId)
+    );
+    currentProcess = {
+        $target: $currentTarget,
+        id:  currentSkill.id,
+        duration: currentSkill.requiredTimeMs
+    }
+    const $bar = $currentTarget.find(".progress-bar-fill");
+
+    $bar.css("--job-duration", currentProcess.duration + "ms");
+
+    console.log("현재 교체한 스킬: ",currentSkill);
+    return currentProcess;
+}
+function renderJobProcess(process){
+    $(".progress-bar-fill").removeClass("active");
+    const $bar = process.$target.find(".progress-bar-fill");
+    void $bar[0].offsetWidth;
+    $bar.addClass("active");
+}
+function startJobLoop(process) {
+
+    renderJobProcess(process);
+    jobTimer = setTimeout(()=>{
+        if (process !== currentProcess) {
+            return;
+        }
+        //보상 지금 위치
+        //알림
+        showToast(process);
+        startJobLoop(process);
+    } ,process.duration)
+}
+function showToast(process){
+    const $toast = $(`
+            <div class="toast">
+                ㅋㅋ
+            </div>
+        `)
+    $("#toast-container").append($toast);
+    setTimeout(() => {
+        $toast.remove();
+    }, 3000);
+}
 //화면 변경
 function switchSectionScreen(sectionId){
     const $targetSection = $("#"+sectionId);
@@ -111,9 +167,6 @@ function switchSectionScreen(sectionId){
     $targetSection.removeClass("hidden"); //보여줄 화면에 hidden 제거
     //헤더정보 변경
     console.log(sectionId,"변경 완료");
-}
-function switchChangeProcess(){
-    //
 }
 //사이드바 숨기기
 function toggleButtonContents(containerId){
