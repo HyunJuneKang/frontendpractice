@@ -62,6 +62,9 @@
     display: flex;
     gap: 20px;
 }
+#job-icon{
+    font-size : 40px;
+}
 .progress-bar{
     width: 260px;
     height:20px;
@@ -81,16 +84,36 @@
     to { width: 100%;}
 }
 /* 활동 완료 토스트 메시지 */
-.toast { animation: slideUp 2s ease forwards;}
-@keyframes slideUp{
-    0% { transform: translateY(100%); opacity:0 }
-    25% { transform: translateY(0); opacity:1 }
-    50% { transform: translateY(0); opacity:1 }
-    100% { transform: translateY(-20px); opacity:0 }
-}
 #toast-container {
     position: fixed;
-    bottom: 20px;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    pointer-events: none;
+}
+
+.toast {
+    min-width: 220px;
+    padding: 14px 24px;
+    background-color: #161f29;
+    color: white;
+    border: 2px solid #f4d579;
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    font-weight: bold;
+    animation: slideUp 2s ease forwards;
+}
+
+@keyframes slideUp {
+    0% {transform: translateY(100%); opacity: 0; }
+    25% {transform: translateY(0);opacity: 0.8;}
+    70% {transform: translateY(0);opacity: 0.8;}
+    100% { transform: translateY(-20px); opacity: 0; }
 }
 /* 푸터 */
 .footer {

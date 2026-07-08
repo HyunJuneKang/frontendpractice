@@ -7,6 +7,7 @@ public class SkillActionDTO {
     private String skillType;
     private String actionName;
     private Integer requiredLevel;
+    private Integer requiredTimeMs;
     private Integer gainExp;
     private Long gainItemId;
     private Integer gainItemAmount;

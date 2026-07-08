@@ -1,23 +1,23 @@
 let jobTimer = null;
 let currentProcess = null;
-
+let skillActionData = [];
 $(()=>{
     init();
 });
 //init
 
 function init(){
-    loadSkillActionCache();
-    renderGameScreen();
-    bindEvent();
+    loadDataRenderGameSkills();
 }
 //스킬 데이터 로드
-function loadSkillActionCache(){
+function loadDataRenderGameSkills(){
     $.ajax({
         url:"/api/skills",
         type:"GET",
         success: function(data){
-            console.log(data);
+            skillActionData = data;
+            renderGameScreen();
+            bindEvent();
         },
         error: function () {
             console.log("스킬 데이터 로딩 실패");
@@ -36,10 +36,10 @@ function renderCombatScreen() {
 }
 //스킬 화면 렌더링
 function renderAllJobScreen() {
-    renderJobScreen("woodcutting");
-    renderJobScreen("fishing");
-    renderJobScreen("mining");
-    renderJobScreen("cooking");
+    renderJobScreen("woodcutting", skillActionData.filter((p) => p.skillType === "woodcutting"));
+    renderJobScreen("fishing", skillActionData.filter((p) => p.skillType === "fishing"));
+    renderJobScreen("mining", skillActionData.filter((p) => p.skillType === "mining"));
+    renderJobScreen("cooking", skillActionData.filter((p) => p.skillType === "cooking"));
 }
 
 function renderPlayerInfo() {
@@ -82,17 +82,15 @@ function renderPlayerStatusInfo(){
 `);
 }
 //스킬 세부 화면 렌더링
-function renderJobScreen(skillName) {
-    const skillList = skillData[skillName];
-
+function renderJobScreen(skillName, skillList) {
     const $container = $(`#${skillName}-section .active-card-container`);
-
     $container.empty();
-
     skillList.forEach((p) => {
+        const icon = skillIconData[skillName][`${p.actionId}`] ?? "";
         $container.append(`
-            <button type="button" class="card" data-skill="${skillName}" data-id="${p.id}">
-                <div>${p.name} ${p.icon}</div>
+            <button type="button" class="card" data-skill="${skillName}" data-id="${p.actionId}">
+                <div id="job-icon">${icon}</div>
+                <div>${p.actionName}</div>
                 <div>필요 레벨: ${p.requiredLevel}</div>
                 <div>${p.gainExp} exp</div>
                 <div>획득 아이템 id: ${p.gainItemId}</div>
@@ -127,14 +125,15 @@ function handleChangeProcess(e){
 //Events
 //작업 반복
 function switchChangeProcess($currentTarget){
-    const skillType = $currentTarget.data("skill");
     const skillId = $currentTarget.data("id");
-    const currentSkill = skillData[skillType].find((p) =>
-        String(p.id) === String(skillId)
+    const currentSkill = skillActionData.find((p) =>
+        String(p.actionId) === String(skillId)
     );
     currentProcess = {
         $target: $currentTarget,
-        id:  currentSkill.id,
+        id:  currentSkill.actionId,
+        name: currentSkill.actionName,
+        gainExp: currentSkill.gainExp,
         duration: currentSkill.requiredTimeMs
     }
     const $bar = $currentTarget.find(".progress-bar-fill");
@@ -165,14 +164,19 @@ function startJobLoop(process) {
     } ,process.duration)
 }
 function showToast(process){
+    const $toastContainer = $("#" +"toast-container");
+    $toastContainer.removeClass("hidden");
     const $toast = $(`
             <div class="toast">
-                ㅋㅋ
+                작업완료!
+                ${process.name}<br>
+                +${process.gainExp}exp
             </div>
         `)
-    $("#toast-container").append($toast);
+    $toastContainer.append($toast);
     setTimeout(() => {
         $toast.remove();
+        $toastContainer.addClass("hidden");
     }, 3000);
 }
 //화면 변경
