@@ -3,6 +3,7 @@
 // =========================
 let jobTimer = null;
 let currentProcess = null;
+let currentPlayer = null;
 let skillActionData = [];
 $(()=>{
     init();
@@ -10,26 +11,57 @@ $(()=>{
 // =========================
 // init ()
 // =========================
-function init(){
-    loadDataRenderGameSkills();
+async function init() {
+    try {
+        await loadGameData();
+        renderGameScreen();
+        bindEvent();
+    } catch (error) {
+        if (error.status === 401) {
+            location.href = "/";
+            return;
+        }
+
+        console.error("게임 초기화 실패", error);
+    }
 }
 // =========================
 // DB 데이터 로드 및 렌더링
 // =========================
-function loadDataRenderGameSkills(){
-    $.ajax({
-        url:"/api/skills",
-        type:"GET",
-        success: function(data){
-            skillActionData = data;
-            renderGameScreen();
-            bindEvent();
-        },
-        error: function () {
-            console.log("스킬 데이터 로딩 실패");
-        }
-    })
+async function loadGameData() {
+    // 1. 세션에 선택된 플레이어 조회
+    currentPlayer = await loadCurrentPlayer();
+
+    console.log("현재 플레이어", currentPlayer);
+
+    // 2. 전체 스킬 액션 데이터 조회
+    skillActionData = await loadSkills();
+
+    // 3. 플레이어 기준으로 사용 가능 여부를 계산
+    // skillActionData = skills.map(function (skill) {
+    //     return {
+    //         ...skill,
+    //         unlocked: currentPlayer.level >= skill.requiredLevel
+    //     };
+    // });
+
 }
+function loadCurrentPlayer() {
+    return $.ajax({
+        url: "/games/current",
+        type: "GET",
+        dataType: "json"
+    });
+}
+
+function loadSkills() {
+    return $.ajax({
+        url: "/api/skills",
+        type: "GET",
+        dataType: "json"
+    });
+}
+
 //화면 렌더링
 function renderGameScreen() {
     renderCombatScreen();

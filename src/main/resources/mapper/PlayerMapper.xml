@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.shinhan.frontendpractice.mapper.PlayerMapper">
+    <resultMap id="playerResultMap"
+               type="com.shinhan.frontendpractice.dto.PlayerDTO">
+
+        <id property="playerId"
+            column="player_id"/>
+
+        <result property="level"
+                column="level"/>
+
+        <result property="minDamage"
+                column="min_damage"/>
+
+        <result property="maxDamage"
+                column="max_damage"/>
+
+        <result property="currentHp"
+                column="current_hp"/>
+
+        <result property="maxHp"
+                column="max_hp"/>
+
+        <result property="attackIntervalMs"
+                column="attack_interval_ms"/>
+
+        <result property="accuracy"
+                column="accuracy"/>
+
+        <result property="criticalChance"
+                column="critical_chance"/>
+
+        <result property="criticalDamageMultiplier"
+                column="critical_damage_multiplier"/>
+
+        <result property="defense"
+                column="defense"/>
+
+        <result property="dodge"
+                column="dodge"/>
+
+    </resultMap>
+
+
+    <insert id="insertPlayer"
+            parameterType="PlayerDTO"
+            useGeneratedKeys="true"
+            keyProperty="playerId">
+
+        INSERT INTO player (
+            level,
+            current_hp,
+            max_hp,
+            min_damage,
+            max_damage,
+            attack_interval_ms,
+            accuracy,
+            critical_chance,
+            critical_damage_multiplier,
+            defense,
+            dodge
+        )
+        VALUES (
+                   #{level},
+                   #{currentHp},
+                   #{maxHp},
+                   #{minDamage},
+                   #{maxDamage},
+                   #{attackIntervalMs},
+                   #{accuracy},
+                   #{criticalChance},
+                   #{criticalDamageMultiplier},
+                   #{defense},
+                   #{dodge}
+               )
+
+    </insert>
+    
+    <select id="selectPlayerById" parameterType="Long" resultMap="playerResultMap">
+        SELECT *
+            FROM player
+            WHERE player_id = #{playerId}
+    </select>
+
+    <select id="selectAllPlayers" resultMap="playerResultMap">
+        SELECT * FROM player
+    </select>
+</mapper>
