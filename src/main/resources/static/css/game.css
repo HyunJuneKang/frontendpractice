@@ -1,6 +1,7 @@
 :root {
     --job-duration: 3s;
 }
+
 /* 사이드바 관련 */
 .sidebar {
     background-color: #302367;
@@ -8,13 +9,21 @@
 }
 
 .sidebar-logo {
-    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    height: 120px;
     background-color: #4f4f70;
+    overflow: hidden;
 }
 
+#sidebar-image {
+    width: 60%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
 .sidebar-section-title {
     color: #4f4f70;
     font-size: 16px;
@@ -50,6 +59,26 @@
 .main-header {
     background-color: #5451ac;
 }
+/* 스킬별 상태 */
+.main-header--woodcutting {
+    background-color: #389522;
+}
+
+.main-header--fishing {
+    background-color: #2b6c98;
+}
+
+.main-header--mining {
+    background-color: #595252;
+}
+
+.main-header--cooking {
+    background-color: #9f5c34;
+}
+.main-header__icon {
+    font-size : 40px;
+}
+
 .main {
     background-image: url("../images/game-background.png");
     background-repeat: no-repeat;
@@ -62,7 +91,7 @@
     display: flex;
     gap: 20px;
 }
-#job-icon{
+.job-icon{
     font-size : 40px;
 }
 .progress-bar{
